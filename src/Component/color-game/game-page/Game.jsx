@@ -59,12 +59,21 @@ export default function Game() {
         };
     }
     function lost() {
-        wrongGuessNum++;
-        wrongGuessNum === 2 && alert('be careful,you gonna lose these game');
-        if (wrongGuessNum === 3) {
-            setModalFlag(true);
-            setScoreCounter(0);
-            wrongGuessNum = 0;
+        let deferntLevelLost = (alertNum, loosingNum) => {
+            wrongGuessNum++;
+            wrongGuessNum === alertNum && alert('be careful,you gonna lose these game');
+            if (wrongGuessNum === loosingNum) {
+                setModalFlag(true);
+                setScoreCounter(0);
+                wrongGuessNum = 0;
+            }
+        }
+        if (levelOfGame.length === 3) {
+            deferntLevelLost(1, 2);
+        } else if (levelOfGame.length === 6) {
+            deferntLevelLost(2, 3);
+        } else {
+            deferntLevelLost(3, 4);
         }
     }
     let tryHandler = e => {

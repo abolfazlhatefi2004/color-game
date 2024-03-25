@@ -13,5 +13,5 @@ export default function ContainerColor() {
         </div>
     );
 }
-// <brandhub-social-media-box-item icon-name="twitter" link-url="https://twitter.com/mercedesbenz" link-title="Twitter" item-index="2">
-// </brandhub-social-media-box-item>
+
+// https://github.com/abolfazlhatefi2004/color-game
