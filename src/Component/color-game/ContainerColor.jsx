@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import NavbarColor from "./NavbarColor";
+import NavbarColor from "./navbar/NavbarColor";
 
 
 export default function ContainerColor() {
