@@ -1,19 +1,21 @@
 import { useState } from "react";
-import { json } from "react-router-dom";
+import Welcome from "./Welcome";
 
 const initialInp = [
     { name: 'name', value: '' },
     { name: 'userName', value: '' },
     { name: 'password', value: '' }
-]
-const playersStore = localStorage.getItem('players');
+];
+const playersStore = JSON.parse(localStorage.getItem('players'));
 
-export default function LogUp() {
+export default function SignUp() {
     const [showEye, setShowEye] = useState(true);
+    const [showWelcome, setShowWelcome] = useState(false);
     const [inpValue, setInpValue] = useState(initialInp);
-    const [players, setPlayers] = useState(playersStore === null ? [] : playersStore);
-    
-    localStorage.setItem('players', JSON.stringify(players));
+
+    let players = playersStore === null ? [] : playersStore;
+
+    console.log(players);
     let showHandler = e => {
         e.preventDefault();
         setShowEye(prev => !prev);
@@ -30,16 +32,18 @@ export default function LogUp() {
         if (players.some(item => item.userName === obj.userName)) {
             alert('please write another username');
         } else {
-            setPlayers(prev => prev.length === 0 ? [obj] : [...prev, obj]);
+            players = players.length === 0 ? [obj] : [...players, obj];
+            localStorage.setItem("players", JSON.stringify(players));
             setInpValue(initialInp);
+            setShowWelcome(true);
         }
     }
 
     return (
         <section className="w-full h-[calc(100%-4rem)] py-[50px]">
             <div className="w-full h-[calc(100%-2rem)] flex items-center justify-center gap-4">
-                <div className="w-5/12 bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-                    <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+                <div className="lg:w-5/12 w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                    <div className="p-6 space-y-4 sm:p-8">
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                             Create an account
                         </h1>
@@ -71,8 +75,9 @@ export default function LogUp() {
                         </form>
                     </div>
                 </div>
-                <div className="w-5/12 h-full  bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `url('/images/illustration.svg')` }}></div>
+                <div className="w-5/12 h-full bg-cover bg-no-repeat bg-center scale-0 lg:scale-100 lg:relative absolute" style={{ backgroundImage: `url('/images/illustration.svg')` }}></div>
             </div>
+            {showWelcome && <Welcome />}
         </section>
     );
 };
