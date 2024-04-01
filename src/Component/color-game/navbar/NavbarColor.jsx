@@ -8,10 +8,11 @@ const itemList = {
 }
 let itemFlag = [
     { name: 'home', flag: true },
-    { name: 'discription', flag: false },
+    { name: 'description', flag: false },
     { name: 'players', flag: false },
     { name: 'aboutUs', flag: false }
 ];
+
 export default memo(function NavbarColor() {
     const [select, setSelect] = useState(itemFlag);
     const menu = useRef();
@@ -21,8 +22,13 @@ export default memo(function NavbarColor() {
         e.preventDefault();
         menu.current.classList.toggle('hidden');
     }
-    let setColor = e => setSelect(prev => e.target.tagName === 'A' ? prev.map(item => item.name == e.target.dataset.name ? { ...item, flag: true } : { ...item, flag: false }) : prev);
-
+    let setColor = e => setSelect(prev => e.target.tagName === 'A' ? prev.map(item => item.name === e.target.dataset.name ? { ...item, flag: true } : { ...item, flag: false }) : prev);
+    onpopstate = e => {
+        const loc = e.currentTarget.location.pathname;
+        let Coordinates = '';
+        loc.slice(1, loc.length) === '' ? Coordinates = 'home' : loc.slice(1, loc.length) === 'About-us' ? Coordinates = 'aboutUs' : Coordinates = loc.slice(1, loc.length).toLowerCase();
+        setSelect(prev => prev.map(item => item.name === Coordinates ? { ...item, flag: true } : { ...item, flag: false }));
+    }
     return (
         <header>
             <nav className="bg-gray-100 border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">

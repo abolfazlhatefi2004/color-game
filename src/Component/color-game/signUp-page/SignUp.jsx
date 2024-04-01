@@ -6,16 +6,15 @@ const initialInp = [
     { name: 'userName', value: '' },
     { name: 'password', value: '' }
 ];
-const playersStore = JSON.parse(localStorage.getItem('players'));
 
 export default function SignUp() {
     const [showEye, setShowEye] = useState(true);
     const [showWelcome, setShowWelcome] = useState(false);
     const [inpValue, setInpValue] = useState(initialInp);
 
+    const playersStore = JSON.parse(localStorage.getItem('players'));
     let players = playersStore === null ? [] : playersStore;
 
-    console.log(players);
     let showHandler = e => {
         e.preventDefault();
         setShowEye(prev => !prev);
