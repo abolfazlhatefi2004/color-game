@@ -11,14 +11,29 @@ const itemsFlag = [
 ];
 let answerColor = [];
 let wrongGuessNum = 0;
+
 export default function Game() {
     const [selecting, setSelecting] = useState(itemsFlag);
     const [levelOfGame, setLevelOfGame] = useState([]);
     const [scoreCounter, setScoreCounter] = useState(0);
     const [modalFlag, setModalFlag] = useState(false);
+    const [newRecordFlag, setNewRecordFlag] = useState(false);
     useEffect(() => {
         generateColors();
     }, [selecting, modalFlag]);
+    useEffect(() => {
+        let setRecord = {};
+        let player = JSON.parse(localStorage.getItem('player'));
+        let players = JSON.parse(localStorage.getItem('players'));
+        console.log(players);
+        if (player.highestScore < scoreCounter) {
+            setRecord = { ...player, highestScore: scoreCounter };
+            localStorage.setItem('player', JSON.stringify(setRecord));
+            const setRecordInPlayers = players.map(item => item.userName === player.userName ? setRecord : item);
+            localStorage.setItem('players', JSON.stringify(setRecordInPlayers));
+            setNewRecordFlag(true);
+        };
+    }, [scoreCounter]);
 
     function generateColors() {
         let colorGame = []
@@ -79,6 +94,7 @@ export default function Game() {
     let tryHandler = e => {
         e.preventDefault();
         setModalFlag(false);
+        setNewRecordFlag(false);
     }
     let newGameHandler = e => {
         e.preventDefault();
@@ -91,7 +107,7 @@ export default function Game() {
             <LevelGame selecting={selecting} clickHandler={levelHandler} newGameHandler={newGameHandler} />
             <Panel answerColor={answerColor} scoreCounter={scoreCounter} />
             <GuessColor square={levelOfGame} clickHandler={judgeGuess} />
-            {modalFlag && <Modal clickHandler={tryHandler} />}
+            {modalFlag && <Modal clickHandler={tryHandler} newRecordFlag={newRecordFlag} />}
         </article>
     );
 }
