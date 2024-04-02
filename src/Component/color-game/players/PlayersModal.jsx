@@ -11,13 +11,6 @@ export default function PlayersModalo({ modalFlag, cancelHandler }) {
    const [compFlag, setCompFlag] = useState(true);
    useEffect(() => { (Object.keys(player).length !== 0) && (player.password === inpVal ? setCompFlag(false) : alert('password is wrong')); }, [player]);
 
-   const text = {
-      title: {
-         delete: 'for deleting an acount first inter password',
-         edit: 'for editing an acount first inter password'
-      },
-   };
-
    let showHandler = e => {
       e.preventDefault();
       setShowEye(prev => !prev);

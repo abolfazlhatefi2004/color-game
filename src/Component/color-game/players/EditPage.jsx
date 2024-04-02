@@ -16,8 +16,8 @@ export default function EditPage({ player, editCompleted }) {
     };
     let submitHandler = e => {
         e.preventDefault();
+        let playerStorage = JSON.parse(localStorage.getItem('player'));
         let filterPlayers = players.filter(item => item.userName !== player.userName);
-        console.log(filterPlayers);
         let obj = {};
         inpValue.forEach(item => obj = { ...obj, [item.name]: item.value });
         obj = { ...obj, highestScore: player.highestScore };
@@ -26,6 +26,7 @@ export default function EditPage({ player, editCompleted }) {
         } else {
             filterPlayers = [...filterPlayers, obj];
             localStorage.setItem('players', JSON.stringify(filterPlayers));
+            playerStorage.userName === player.userName && localStorage.setItem('player', JSON.stringify(obj));
             editCompleted(e);
         }
     };

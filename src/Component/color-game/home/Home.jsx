@@ -1,11 +1,14 @@
-import { memo, useRef } from "react";
+import { useRef, useState } from "react";
 import ColorWheel from "./ColorWheel";
 import HomeBtn from "./HomeBtn";
 
 let margin = {};
-export default memo(function Home() {
+export default function Home() {
+    const [render, setRender] = useState(false);
     const home = useRef();
 
+    let player = JSON.parse(localStorage.getItem('player'));
+    let playerFlag = player === null ? false : true;
 
 
     let getCoordinates = elem => {
@@ -13,7 +16,7 @@ export default memo(function Home() {
         const rectX = rect.x + rect.width / 2;
         const rectY = rect.y + rect.height / 2;
         return { x: rectX, y: rectY };
-    }
+    };
     let getAngle = (x, y, crt) => {
         const dx = crt.x - x;
         const dy = crt.y - y;
@@ -24,7 +27,7 @@ export default memo(function Home() {
             y: Math.round(dy / 8) > 20 ? 20 : Math.round(dy / 8) < -20 ? -20 : Math.round(dy / 8)
         }
         return deg
-    }
+    };
     let moveHandler = e => {
         const wheels = {
             Beige: home.current.children[1].children[0].children[0],
@@ -46,11 +49,18 @@ export default memo(function Home() {
         wheels.blue.style.marginLeft = `${margin.x + 20}px`;
         wheels.green.style.marginTop = `${margin.y + 15}px`;
         wheels.green.style.marginLeft = `${margin.x - 20}px`;
-    }
+    };
+    let clickHandler = e => {
+        e.preventDefault();
+        const alertFlag = JSON.parse(localStorage.getItem('player')) === null ? true : false;
+        console.log(alertFlag);
+        setRender(prev => !prev);
+        alertFlag && alert('please first sign up');
+    };
     return (
         <div className="w-full lg:h-[90%] lg:px-4 lg:py-4 py-8 flex justify-center items-center flex-wrap flex-col-reverse lg:flex-row gap-16" ref={home} onMouseMove={e => moveHandler(e)}>
-            <HomeBtn />
-            <ColorWheel />
+            <HomeBtn player={JSON.parse(localStorage.getItem('player'))} playerFlag={playerFlag} />
+            <ColorWheel playerFlag={playerFlag} clickHandler={clickHandler} />
         </div>
     );
-});
+};

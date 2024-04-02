@@ -33,6 +33,7 @@ export default function SignUp() {
         } else {
             players = players.length === 0 ? [obj] : [...players, obj];
             localStorage.setItem("players", JSON.stringify(players));
+            localStorage.setItem("player", JSON.stringify(obj));
             setInpValue(initialInp);
             setShowWelcome(true);
         }

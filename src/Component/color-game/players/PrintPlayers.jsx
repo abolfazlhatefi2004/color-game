@@ -2,11 +2,11 @@ import PlayersModalo from "./PlayersModal";
 
 
 
-export default function PrintPlayers({ playersStore, cancelHandler, modalFlag, clickHandler }) {
+export default function PrintPlayers({ playersStore, cancelHandler, modalFlag , clickHandler}) {
 
     const rows = playersStore.map((item, index) => {
         return (
-            <tr className={`${index / 2 === 0 ? 'bg-white' : 'bg-gray-50'} border-b dark:bg-gray-800 dark:border-gray-700`} key={index}>
+            <tr className={`${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} border-b dark:bg-gray-800 dark:border-gray-700`} key={index}>
                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {item.name}
                 </th>

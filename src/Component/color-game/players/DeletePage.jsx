@@ -6,7 +6,9 @@ export default function DeletePage({ player, cancelHandler }) {
     let deleteHandler = e => {
         e.preventDefault();
         let players = JSON.parse(localStorage.getItem('players'));
+        let playerStorage = JSON.parse(localStorage.getItem('player'));
         const filterPlayers = players.filter(item => item.userName !== player.userName);
+        playerStorage.userName === player.userName && localStorage.removeItem('player');
         localStorage.setItem('players', JSON.stringify(filterPlayers));
         cancelHandler(e);
     };
