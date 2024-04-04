@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/color-game/static/css/main.f87d7d2c.css",
-    "main.js": "/color-game/static/js/main.6cac95d1.js",
+    "main.js": "/color-game/static/js/main.7d624449.js",
     "static/js/453.ca1c37d8.chunk.js": "/color-game/static/js/453.ca1c37d8.chunk.js",
     "static/media/hint-movie.mp4": "/color-game/static/media/hint-movie.de2137b247ceabba25bd.mp4",
     "static/media/illustration.svg": "/color-game/static/media/illustration.ff80a1c7a4e9cdd2711b805f176c4cdb.svg",
@@ -13,11 +13,11 @@
     "static/media/place-2.png": "/color-game/static/media/place-2.cceaed4bdba9edb60a0c.png",
     "index.html": "/color-game/index.html",
     "main.f87d7d2c.css.map": "/color-game/static/css/main.f87d7d2c.css.map",
-    "main.6cac95d1.js.map": "/color-game/static/js/main.6cac95d1.js.map",
+    "main.7d624449.js.map": "/color-game/static/js/main.7d624449.js.map",
     "453.ca1c37d8.chunk.js.map": "/color-game/static/js/453.ca1c37d8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f87d7d2c.css",
-    "static/js/main.6cac95d1.js"
+    "static/js/main.7d624449.js"
   ]
 }
