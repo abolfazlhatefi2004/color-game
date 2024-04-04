@@ -11,7 +11,7 @@ export default function ColorWheel({ playerFlag, clickHandler }) {
                 <div className="w-full h-full rounded-full absolute top-0 left-0 bg-[#0040ff4d] scale-0 lg:scale-100"></div>
                 <div className="w-full h-full rounded-full absolute top-0 left-0 bg-[#00ff3f4d] scale-0 lg:scale-100"></div>
             </div>
-            <div className="w-full h-full bg-cover bg-no-repeat bg-center rounded-full flex justify-center items-center flex-wrap absolute" style={{ backgroundImage: `url('/images/colorCircle.png')` }}>
+            <div className="w-full h-full bg-cover bg-no-repeat bg-center rounded-full flex justify-center items-center flex-wrap absolute" style={{ backgroundImage: `url(${require('../../../images/colorCircle.png')})` }}>
                 <div className="lg:w-[360px] w-[200px] lg:h-[360px] h-[200px] rounded-full absolute">
                     <span className="block lg:w-10 w-6 lg:h-10 h-6 rounded-full absolute lg:top-9 top-4 left-0 lg:border-8 border-4 border-black"></span>
                 </div>

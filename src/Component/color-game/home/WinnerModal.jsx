@@ -11,7 +11,7 @@ export default function WinnerModal({ closeHandler, print }) {
                 {item.userName}
             </td>
             <td className="px-6 py-4 flex items-center text-xl">
-                <span className={`block w-[40px] h-[32px] bg-cover bg-no-repeat bg-center`} style={{ backgroundImage: `url('/images/place-${(index + 1) < 4 ? (index + 1) : 4}.png')` }}></span>
+                <span className={`block w-[40px] h-[32px] bg-cover bg-no-repeat bg-center`} style={{ backgroundImage: `url(${require('../../../images/place-' + ((index + 1) < 4 ? (index + 1) : 4) + '.png')})` }}></span>
                 #{index + 1}
             </td>
             <td className="px-6 py-4 text-xl">

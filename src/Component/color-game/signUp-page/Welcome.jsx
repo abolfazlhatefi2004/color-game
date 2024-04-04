@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default memo(function Welcome() {
     return (
         <div className="fixed top-0 right-0 left-0 z-50 flex flex-col items-center  md:inset-0 h-screen max-h-full bg-gray-100">
-            <div className="xl:w-8/12 lg:w-11/12 w-full lg:h-[70%] h-[50%] bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `url('/images/welcome.png')` }}>
+            <div className="xl:w-8/12 lg:w-11/12 w-full lg:h-[70%] h-[50%] bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `url(${require('../../../images/welcome.png')})` }}>
             </div>
             <Link to="/" className="flex items-center justify-center gap-4 text-white rounded-lg md:px-7 px-4 md:py-3 py-2 uppercase font-semibold md:text-2xl text-xl bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
                 Home

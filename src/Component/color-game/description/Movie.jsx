@@ -8,7 +8,7 @@ export default function Movie() {
                 <i className='bx bxs-down-arrow-square text-xl' style={{ color: '#fbbf24' }}></i>
             </h3>
             <video className="w-full bg-gray-100" controls muted autoPlay loop>
-                <source src="/movies/hint-movie.mp4" type="video/mp4" />
+                <source src={require("../../../movies/hint-movie.mp4")} type="video/mp4" />
             </video>
         </div>
     );

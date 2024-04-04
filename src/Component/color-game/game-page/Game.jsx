@@ -4,6 +4,8 @@ import LevelGame from "./LevelGame";
 import Panel from "./Panel";
 import Modal from "./Modal";
 
+import win from '../../../images/win.png'
+
 const itemsFlag = [
     { name: 'easy', flag: false },
     { name: 'normal', flag: false },
@@ -64,7 +66,7 @@ export default function Game() {
             tagStyle.backgroundColor = `transparent`;
             if (e.target.dataset.flag === "true") {
                 e.target.className = `rounded-lg cursor-pointer transition-all duration-700 bg-cover bg-no-repeat bg-center`;
-                e.target.style.backgroundImage = `url('/images/win.png')`;
+                e.target.style.backgroundImage = `url(${win})`;
                 setTimeout(() => generateColors(), 700);
                 setScoreCounter(prev => prev + (levelOfGame.length / 3));
                 wrongGuessNum = 0;
