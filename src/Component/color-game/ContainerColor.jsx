@@ -14,12 +14,12 @@ export default function ContainerColor() {
             <div className="container bg-white h-screen">
                 <NavbarColor />
                 <Routes >
-                    <Route path="/" element={<Home />} />
-                    <Route path="/About-us" element={<AboutUs />} />
-                    <Route path="/Description" element={<Description />} />
-                    <Route path="/Players" element={<Players />} />
-                    <Route path="/play-game" element={<Game />} />
-                    <Route path="/sign-up" element={<SignUp />} />
+                    <Route path="/color-game" element={<Home />} />
+                    <Route path="/color-game/About-us" element={<AboutUs />} />
+                    <Route path="/color-game/Description" element={<Description />} />
+                    <Route path="/color-game/Players" element={<Players />} />
+                    <Route path="/color-game/play-game" element={<Game />} />
+                    <Route path="/color-game/sign-up" element={<SignUp />} />
                 </Routes>
             </div>
         </div>
